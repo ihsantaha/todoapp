@@ -1,0 +1,12 @@
+<h1>Login</h1>
+
+<div *ngIf="invalidCredentials" class="alert-danger padding-1">
+  {{invalidCredentials}}
+</div>
+
+<div>
+  Username: <input type="text" [(ngModel)]="username" class="form-control">
+  Password: <input type="password" [(ngModel)]="password" class="form-control">
+  <br>
+  <button class="btn btn-success" (click)="onLogin()">Login</button>
+</div>
