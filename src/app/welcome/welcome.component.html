@@ -3,3 +3,26 @@
 <div>
   You can view your todo list <a routerLink="/todo-list">here</a>
 </div>
+
+<br>
+
+<div>
+  Click on the button to get a custimazable message
+</div>
+
+<br>
+
+<div>
+  <!-- <button (click)="getCustomMessage()" class="btn btn-success">Get Message</button> -->
+  <button (click)="getVariableMessage('Earth')" class="btn btn-success">Get Message</button>
+</div>
+
+<br>
+
+<div *ngIf="customMessage">
+  <h2 class="alert-success padding-1">Your custom message is: {{customMessage}}</h2>
+</div>
+
+<div *ngIf="errorMessage">
+  <h2 class="alert-danger padding-1">An error has occured: {{errorMessage}}</h2>
+</div>
