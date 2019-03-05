@@ -9,6 +9,7 @@ import { TodoListComponent } from './todo-list/todo-list.component';
 import { LogoutComponent } from './logout/logout.component';
 
 import { RouteGuardService } from './services/route-guard.service';
+import { TodoComponent } from './todo/todo.component';
 
 const routes: Routes = [
     {
@@ -27,6 +28,11 @@ const routes: Routes = [
     {
         path: 'todo-list',
         component: TodoListComponent,
+        canActivate: [RouteGuardService]
+    },
+    {
+        path: 'todo-list/:id',
+        component: TodoComponent,
         canActivate: [RouteGuardService]
     },
     {

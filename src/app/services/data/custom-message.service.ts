@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +11,18 @@ export class CustomMessageService {
   getCustomMessage() {
     return this.http.get<HelloWorldBean>('http://localhost:8085/hello-world-bean');
   }
-  
+
   getVariableMessage(message: string) {
-    return this.http.get<HelloWorldBean>(`http://localhost:8085/hello-world/${message}`);
+    let headers = new HttpHeaders({Authorization: this.createBasicAuthHeader()})
+
+    return this.http.get<HelloWorldBean>(`http://localhost:8085/hello-world/${message}`, {headers});
+  }
+
+  createBasicAuthHeader() {
+    let username = 'Ihsan';
+    let password = 'Password';
+    let basicAuthHeader = 'Basic ' + window.btoa(username + ':' + password);
+    return basicAuthHeader;
   }
 
 }
